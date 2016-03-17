@@ -320,6 +320,7 @@ class BaseOAuth2(OAuthAuth):
         params = {
             'client_id': client_id,
             'redirect_uri': self.get_redirect_uri(state)
+            'hd': self.settings.get("GOOGLE_OAUTH2_DOMAIN")
         }
         if self.STATE_PARAMETER and state:
             params['state'] = state
@@ -347,6 +348,7 @@ class BaseOAuth2(OAuthAuth):
             'code': self.data.get('code', ''),  # server response code
             'client_id': client_id,
             'client_secret': client_secret,
+            'hd': self.settings.get("GOOGLE_OAUTH2_DOMAIN")
             'redirect_uri': self.get_redirect_uri(state)
         }
 
